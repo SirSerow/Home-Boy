@@ -65,7 +65,7 @@ async def _take_picture(message: Message):
     camera = PiCamera()
 
     #camera.start_preview()
-    #sleep(1)
+    sleep(.5)
     camera.capture('/pictures/latest_picture.jpg')
     #camera.stop_preview()
     camera.close()
