@@ -5,6 +5,9 @@ from aiogram.types import Message, InputFile
 from loader import dp, bot, config, _
 from services.users import count_users, get_users
 
+from picamera import PiCamera
+from time import sleep
+
 
 @dp.message_handler(i18n_text='Export users 📁', is_admin=True)
 @dp.message_handler(commands=['export_users'], is_admin=True)
@@ -48,6 +51,10 @@ async def _active_users_count(message: Message):
     await message.answer(_('Active users: {count}').format(count=count))
 @dp.message_handler(commands=['take_picture'], is_admin=True)
 async def _take_picture(message: Message):
-    
 
+    camera = PiCamera()
+    camera.start_preview()
+    sleep(1)
+    camera.capture('/pictures/latest_shot.jpg')
+    camera.stop_preview()
     await message.answer(_('Picture here'))
