@@ -10,7 +10,6 @@ from time import sleep
 
 import os
 
-
 @dp.message_handler(i18n_text='Export users 📁', is_admin=True)
 @dp.message_handler(commands=['export_users'], is_admin=True)
 async def _export_users(message: Message):
@@ -53,8 +52,6 @@ async def _active_users_count(message: Message):
     await message.answer(_('Active users: {count}').format(count=count))
 @dp.message_handler(commands=['take_picture'], is_admin=True)
 async def _take_picture(message: Message):
-
-    #camera = PiCamera()
     
     path = "pictures"
     isExist = os.path.exists(path)
@@ -66,13 +63,12 @@ async def _take_picture(message: Message):
         camera = PiCamera()
     except:
         await message.answer(_('Camera open: NOT ok'))
-    try:
-        camera.capture('/pictures/latest_picture.jpg')
-    except:
-        await message.answer(_('Message taken: NOT ok'))
     else:
-        
-    #camera.stop_preview()
-        camera.close()
-        await message.answer(_('Message taken: ok'))
+        try:
+            camera.capture('/pictures/latest_picture.jpg')
+        except:
+            await message.answer(_('Picture taken: NOT ok'))
+        else:
+            camera.close()
+            await message.answer(_('Picture taken: ok'))
     
