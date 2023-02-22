@@ -65,10 +65,13 @@ async def _take_picture(message: Message):
         await message.answer(_('Camera open: NOT ok'))
     else:
         try:
+            camera.start_preview()
+            sleep(.5)
             camera.capture('/pictures/latest_picture.jpg')
         except:
             await message.answer(_('Picture taken: NOT ok'))
         else:
+            camera.stop_preview()
             camera.close()
             await message.answer(_('Picture taken: ok'))
     
