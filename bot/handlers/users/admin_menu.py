@@ -54,7 +54,7 @@ async def _active_users_count(message: Message):
 @dp.message_handler(commands=['take_picture'], is_admin=True)
 async def _take_picture(message: Message):
 
-    camera = PiCamera()
+    #camera = PiCamera()
     
     path = "pictures"
     isExist = os.path.exists(path)
@@ -66,10 +66,6 @@ async def _take_picture(message: Message):
         camera = PiCamera()
     except:
         await message.answer(_('Camera open: NOT ok'))
-    
-
-    #camera.start_preview()
-    #sleep(.5)
     try:
         camera.capture('/pictures/latest_picture.jpg')
     except:
