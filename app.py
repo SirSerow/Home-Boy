@@ -5,7 +5,6 @@ from bot.commands import set_default_commands
 from loader import dp, bot, config
 from utils.misc.logging import logger
 
-
 async def on_startup(dispatcher: Dispatcher):
     logger.info('Bot startup')
 
