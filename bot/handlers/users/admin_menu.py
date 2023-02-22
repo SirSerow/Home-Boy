@@ -69,4 +69,4 @@ async def _take_picture(message: Message):
     camera.capture('/pictures/latest_picture.jpg')
     #camera.stop_preview()
 
-    await message.answer(_('Picture here'))
+    await message.answer(('Message taken'))
