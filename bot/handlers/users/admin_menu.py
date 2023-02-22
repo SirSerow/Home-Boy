@@ -62,4 +62,9 @@ async def _take_picture(message: Message):
         os.makedirs(path)
         await message.answer(_('Dir created'))
     
+    camera.start_preview()
+    sleep(5)
+    camera.capture('/pictures/latest_picture.jpg')
+    camera.stop_preview()
+
     await message.answer(_('Picture here'))
