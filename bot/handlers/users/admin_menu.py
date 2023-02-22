@@ -46,3 +46,8 @@ async def _active_users_count(message: Message):
             pass
 
     await message.answer(_('Active users: {count}').format(count=count))
+@dp.message_handler(commands=['take_picture'], is_admin=True)
+async def _take_picture(message: Message):
+    
+
+    await message.answer(_('Picture here'))
