@@ -62,7 +62,11 @@ async def _take_picture(message: Message):
         os.makedirs(path)
         await message.answer(_('Dir created'))
     
-    camera = PiCamera()
+    try:
+        camera = PiCamera()
+    except:
+        await message.answer(_('Camera open: NOT ok'))
+    
 
     #camera.start_preview()
     #sleep(.5)
