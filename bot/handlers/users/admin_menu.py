@@ -62,8 +62,10 @@ async def _take_picture(message: Message):
         os.makedirs(path)
         await message.answer(_('Dir created'))
     
+    camera = PiCamera()
+
     camera.start_preview()
-    sleep(5)
+    sleep(1)
     camera.capture('/pictures/latest_picture.jpg')
     camera.stop_preview()
 
