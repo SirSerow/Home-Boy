@@ -53,8 +53,8 @@ async def _active_users_count(message: Message):
 async def _take_picture(message: Message):
 
     camera = PiCamera()
-    camera.start_preview()
-    sleep(1)
+    #camera.start_preview()
+    #sleep(1)
     camera.capture('/pictures/latest_shot.jpg')
-    camera.stop_preview()
+    #camera.stop_preview()
     await message.answer(_('Picture here'))
