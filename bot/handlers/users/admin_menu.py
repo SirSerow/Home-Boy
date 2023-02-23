@@ -65,7 +65,7 @@ async def _take_picture(message: Message):
     #else:
     try:
         camera.start_preview()
-        sleep(.5)
+        sleep(5)
         camera.capture('/pictures/latest_picture.jpg')
     except:
         camera.stop_preview()
