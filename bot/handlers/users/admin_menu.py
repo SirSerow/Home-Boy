@@ -66,7 +66,7 @@ async def _take_picture(message: Message):
     #else:
 
     camera.start_preview()
-    sleep(3)
+    sleep(.5)
     try:
         camera.capture(f'{os.getcwd()}/pictures/latest_picture.jpg')
     except Exception as e:
@@ -76,7 +76,7 @@ async def _take_picture(message: Message):
     else:
         camera.stop_preview()    
         camera.close()
-        await message.answer(_('Picture taken: ok'))
+        await message.reply_document(open(f'{os.getcwd()}/pictures/latest_picture.jpg', 'rb'))
     #try:
     #    camera.start_preview()
     #    sleep(5)
