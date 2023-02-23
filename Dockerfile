@@ -16,7 +16,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 RUN apt -y install python3-dev postgresql postgresql-contrib python3-psycopg2 libpq-dev
 
-RUN pip3 install redis
+RUN python3 -m pip install redis
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
