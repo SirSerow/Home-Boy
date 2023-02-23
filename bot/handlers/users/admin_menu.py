@@ -7,6 +7,7 @@ from services.users import count_users, get_users
 
 from picamera import PiCamera
 from time import sleep
+import traceback
 
 import os
 
@@ -66,10 +67,16 @@ async def _take_picture(message: Message):
 
     camera.start_preview()
     sleep(3)
-    camera.capture(f'{os.getcwd()}/pictures/latest_picture.jpg')
-    camera.stop_preview()
-    camera.close()
-    await message.answer(_('Picture taken: ok'))
+    try:
+        camera.capture(f'{os.getcwd()}/pictures/latest_picture.jpg')
+    except Exception as e:
+        camera.stop_preview()
+        camera.close()
+        await message.answer(_(f'{traceback.format_exc()}'))
+    else:
+        camera.stop_preview()    
+        camera.close()
+        await message.answer(_('Picture taken: ok'))
     #try:
     #    camera.start_preview()
     #    sleep(5)
