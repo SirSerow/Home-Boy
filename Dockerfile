@@ -14,6 +14,8 @@ RUN pip install virtualenv
 RUN virtualenv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
+RUN apt install python3-dev postgresql postgresql-contrib python3-psycopg2 libpq-dev
+
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
