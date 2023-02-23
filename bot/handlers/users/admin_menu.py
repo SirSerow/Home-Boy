@@ -52,26 +52,25 @@ async def _active_users_count(message: Message):
     await message.answer(_('Active users: {count}').format(count=count))
 @dp.message_handler(commands=['take_picture'], is_admin=True)
 async def _take_picture(message: Message):
-    
+    camera = PiCamera()
     path = "pictures"
     isExist = os.path.exists(path)
     if not isExist:
         os.makedirs(path)
         await message.answer(_('Dir created'))
-    
+    ##try:
+        
+    #except:
+    #    await message.answer(_('Camera open: NOT ok'))
+    #else:
     try:
-        camera = PiCamera()
+        camera.start_preview()
+        sleep(.5)
+        camera.capture('/pictures/latest_picture.jpg')
     except:
-        await message.answer(_('Camera open: NOT ok'))
+        await message.answer(_('Picture taken: NOT ok'))
     else:
-        try:
-            camera.start_preview()
-            sleep(.5)
-            camera.capture('/pictures/latest_picture.jpg')
-        except:
-            await message.answer(_('Picture taken: NOT ok'))
-        else:
-            camera.stop_preview()
-            camera.close()
-            await message.answer(_('Picture taken: ok'))
+        camera.stop_preview()
+        camera.close()
+        await message.answer(_('Picture taken: ok'))
     
