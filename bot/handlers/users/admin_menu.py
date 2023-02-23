@@ -57,7 +57,7 @@ async def _take_picture(message: Message):
     isExist = os.path.exists(path)
     if not isExist:
         os.makedirs(path)
-        await message.answer(_('Dir created'))
+        #await message.answer(_('Dir created'))
     ##try:
         
     #except:
@@ -68,6 +68,8 @@ async def _take_picture(message: Message):
         sleep(.5)
         camera.capture('/pictures/latest_picture.jpg')
     except:
+        camera.stop_preview()
+        camera.close()
         await message.answer(_('Picture taken: NOT ok'))
     else:
         camera.stop_preview()
