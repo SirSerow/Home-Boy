@@ -92,20 +92,20 @@ async def _take_picture(message: Message):
     #    camera.close()
     #    await message.answer(_('Picture taken: ok'))
     
-    @dp.message_handler(i18n_text='opencv_show_last', is_admin=True)
-    @dp.message_handler(commands=['opencv_show_last'], is_admin=True)
-    async def _opencv_show_last(message: Message):
-        path = "opencv"
-        isExist = os.path.exists(path)
-        if not isExist:
-            os.makedirs(path)
-        await message.reply_photo(open(f'{os.getcwd()}/opencv/last_frame.jpg', 'rb'))
+@dp.message_handler(i18n_text='opencv_show_last', is_admin=True)
+@dp.message_handler(commands=['opencv_show_last'], is_admin=True)
+async def _opencv_show_last(message: Message):
+    path = "opencv"
+    isExist = os.path.exists(path)
+    if not isExist:
+        os.makedirs(path)
+    await message.reply_photo(open(f'{os.getcwd()}/opencv/last_frame.jpg', 'rb'))
 
-    @dp.message_handler(i18n_text='opencv_show_last_movement', is_admin=True)
-    @dp.message_handler(commands=['opencv_show_last_movement'], is_admin=True)
-    async def _opencv_show_last_movement(message: Message):
-        path = "opencv"
-        isExist = os.path.exists(path)
-        if not isExist:
-            os.makedirs(path)
-        await message.reply_photo(open(f'{os.getcwd()}/opencv/last_motion_detected.jpg', 'rb'))
+@dp.message_handler(i18n_text='opencv_show_last_movement', is_admin=True)
+@dp.message_handler(commands=['opencv_show_last_movement'], is_admin=True)
+async def _opencv_show_last_movement(message: Message):
+    path = "opencv"
+    isExist = os.path.exists(path)
+    if not isExist:
+        os.makedirs(path)
+    await message.reply_photo(open(f'{os.getcwd()}/opencv/last_motion_detected.jpg', 'rb'))
