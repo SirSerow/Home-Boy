@@ -51,6 +51,8 @@ async def _active_users_count(message: Message):
             pass
 
     await message.answer(_('Active users: {count}').format(count=count))
+
+@dp.message_handler(i18n_text='take_picture 📷', is_admin=True)
 @dp.message_handler(commands=['take_picture'], is_admin=True)
 async def _take_picture(message: Message):
     camera = PiCamera()
@@ -76,7 +78,7 @@ async def _take_picture(message: Message):
     else:
         camera.stop_preview()    
         camera.close()
-        await message.reply_document(open(f'{os.getcwd()}/pictures/latest_picture.jpg', 'rb'))
+        await message.reply_photo(open(f'{os.getcwd()}/pictures/latest_picture.jpg', 'rb'))
     #try:
     #    camera.start_preview()
     #    sleep(5)
@@ -90,3 +92,12 @@ async def _take_picture(message: Message):
     #    camera.close()
     #    await message.answer(_('Picture taken: ok'))
     
+    @dp.message_handler(i18n_text='opencv_show_last 📷', is_admin=True)
+    @dp.message_handler(commands=['opencv_show_last'], is_admin=True)
+    async def _opencv_show_last(message: Message):
+        await message.reply_photo(open(f'{os.getcwd()}/pictures/last_motion_detected.jpg', 'rb'))
+
+    @dp.message_handler(i18n_text='opencv_show_last_movement 📷', is_admin=True)
+    @dp.message_handler(commands=['opencv_show_last_movement'], is_admin=True)
+    async def _opencv_show_last_movement(message: Message):
+        await message.reply_photo(open(f'{os.getcwd()}/opencv/last_frame.jpg', 'rb'))
