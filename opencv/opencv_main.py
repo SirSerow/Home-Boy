@@ -12,7 +12,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="path to the video file")
 ap.add_argument("-a", "--min-area", type=int, default=500, help="minimum area size")
 args = vars(ap.parse_args())
-cascade = cv2.CascadeClassifier('haar_frontal_face.xml')
+cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 # if the video argument is None, then we are reading from webcam
 if args.get("video", None) is None:
 	vs = VideoStream(src=0).start()
