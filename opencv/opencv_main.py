@@ -46,6 +46,7 @@ while True:
 			roi_gray = gray[y:y+h, x:x+w] 
 			roi_color = frame[y:y+h, x:x+w]
 		cv2.imwrite(os.path.dirname(__file__) + "/../pictures/last_face.jpg", frame)
+		break
 	gray = cv2.GaussianBlur(gray, (21, 21), 0)
 	# if the first frame is None, initialize it
 	if firstFrame is None:
