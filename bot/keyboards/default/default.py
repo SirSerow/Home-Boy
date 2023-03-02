@@ -12,7 +12,6 @@ def get_default_markup(user):
         markup.add(_('Export users 📁'))
         markup.add(_('Count users 👥'))
         markup.add(_('Count active users 👥'))
-        markup.add(_('Count active users 👥'))
         markup.add(_('Take picture 📷'))
 
     if len(markup.keyboard) < 1:
