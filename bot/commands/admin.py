@@ -12,8 +12,8 @@ def get_admin_commands(lang: str = 'en') -> list[BotCommand]:
         BotCommand('/count_users', _('count users who contacted the bot', locale=lang)),
         BotCommand('/count_active_users', _('count active users (who didn\'t block the bot)', locale=lang)), 
         BotCommand('/take_picture', _('take picture', locale=lang)),
-        BotCommand('/opencv_show_last', _('opencv show last', locale=lang)),
-        BotCommand('/opencv_show_last_movement', _('opencv show last movement', locale=lang)),
+        BotCommand('/opencv_show_last', _('opencv show last frame', locale=lang)),
+        BotCommand('/opencv_show_last_movement', _('opencv show last movement detected', locale=lang)),
     ])
 
     return commands
