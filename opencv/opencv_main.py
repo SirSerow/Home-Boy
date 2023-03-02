@@ -34,7 +34,8 @@ while True:
 	# of the video
 	if frame is None:
 		break
-	# resize the frame, convert it to grayscale, and blur it
+	cv2.imwrite(os.path.dirname(__file__) + "/../pictures/last_clean_frame.jpg", frame)
+    # resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	gray = cv2.GaussianBlur(gray, (21, 21), 0)

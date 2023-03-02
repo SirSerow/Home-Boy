@@ -101,3 +101,8 @@ async def _opencv_show_last(message: Message):
 @dp.message_handler(commands=['opencv_show_last_movement'], is_admin=True)
 async def _opencv_show_last_movement(message: Message):
     await message.reply_photo(open(f'{os.getcwd()}/pictures/last_motion_detected.jpg', 'rb'))
+
+@dp.message_handler(i18n_text='Clean frame 🌅', is_admin=True)
+@dp.message_handler(commands=['opencv_show_last_clean'], is_admin=True)
+async def _opencv_show_last(message: Message):
+    await message.reply_photo(open(f'{os.getcwd()}/pictures/last_clean_frame.jpg', 'rb'))
