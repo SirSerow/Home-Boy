@@ -40,7 +40,7 @@ while True:
 	frame = imutils.resize(frame, width=500)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	faces = cascade.detectMultiScale(gray, 1.5, 5)
-	if faces.any():
+	if len(faces) > 0:
 		for (x,y,w,h) in faces: 
 			cv2.rectangle(frame,(x,y),(x+w,y+h),(255,255,0),2) 
 			roi_gray = gray[y:y+h, x:x+w] 
