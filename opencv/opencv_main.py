@@ -12,6 +12,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="path to the video file")
 ap.add_argument("-a", "--min-area", type=int, default=500, help="minimum area size")
 args = vars(ap.parse_args())
+cascade = cv2.CascadeClassifier('haar_frontal_face.xml')
 # if the video argument is None, then we are reading from webcam
 if args.get("video", None) is None:
 	vs = VideoStream(src=0).start()
@@ -38,6 +39,13 @@ while True:
     # resize the frame, convert it to grayscale, and blur it
 	frame = imutils.resize(frame, width=500)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+	faces = cascade.detectMultiScale(gray, 1.5, 5)
+	if faces:
+		for (x,y,w,h) in faces: 
+			cv2.rectangle(frame,(x,y),(x+w,y+h),(255,255,0),2) 
+			roi_gray = gray[y:y+h, x:x+w] 
+			roi_color = frame[y:y+h, x:x+w]
+		cv2.imwrite(os.path.dirname(__file__) + "/../pictures/last_face.jpg", frame)
 	gray = cv2.GaussianBlur(gray, (21, 21), 0)
 	# if the first frame is None, initialize it
 	if firstFrame is None:
