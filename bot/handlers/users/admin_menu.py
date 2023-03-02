@@ -52,7 +52,7 @@ async def _active_users_count(message: Message):
 
     await message.answer(_('Active users: {count}').format(count=count))
 
-@dp.message_handler(i18n_text='take_picture 📷', is_admin=True)
+@dp.message_handler(i18n_text='Take picture 📷', is_admin=True)
 @dp.message_handler(commands=['take_picture'], is_admin=True)
 async def _take_picture(message: Message):
     camera = PiCamera()
