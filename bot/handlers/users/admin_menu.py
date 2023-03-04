@@ -78,7 +78,7 @@ async def _take_picture(message: Message):
     else:
         camera.stop_preview()    
         camera.close()
-        await message.answer_photo(open(f'{os.getcwd()}/pictures/latest_picture.jpg', 'r'))
+        await message.answer_photo(open(f'{os.getcwd()}/pictures/latest_picture.jpg', 'rb'))
     #try:
     #    camera.start_preview()
     #    sleep(5)
@@ -96,38 +96,38 @@ async def _take_picture(message: Message):
 @dp.message_handler(commands=['opencv_show_last'], is_admin=True)
 async def _opencv_show_last(message: Message):
     try:
-      open(f'{os.getcwd()}/pictures/last_frame.jpg', 'r')
+      open(f'{os.getcwd()}/pictures/last_frame.jpg', 'rb')
     except IOError:
         await message.answer(_('Could not open the file'))
     else:
-        await message.answer_photo(open(f'{os.getcwd()}/pictures/last_frame.jpg', 'r'))
+        await message.answer_photo(open(f'{os.getcwd()}/pictures/last_frame.jpg', 'rb'))
 
 @dp.message_handler(i18n_text='Last movement detected ❗️', is_admin=True)
 @dp.message_handler(commands=['opencv_show_last_movement'], is_admin=True)
 async def _opencv_show_last_movement(message: Message):
     try:
-      open(f'{os.getcwd()}/pictures/last_motion_detected.jpg', 'r')
+      open(f'{os.getcwd()}/pictures/last_motion_detected.jpg', 'rb')
     except IOError:
         await message.answer(_('Could not open the file'))
     else:
-        await message.answer_photo(open(f'{os.getcwd()}/pictures/last_motion_detected.jpg', 'r'))
+        await message.answer_photo(open(f'{os.getcwd()}/pictures/last_motion_detected.jpg', 'rb'))
 
 @dp.message_handler(i18n_text='Clean frame 🌅', is_admin=True)
 @dp.message_handler(commands=['opencv_show_last_clean'], is_admin=True)
 async def _opencv_show_last(message: Message):
     try:
-      open(f'{os.getcwd()}/pictures/last_clean_frame.jpg', 'r')
+      open(f'{os.getcwd()}/pictures/last_clean_frame.jpg', 'rb')
     except IOError:
         await message.answer(_('Could not open the file'))
     else:
-        await message.answer_photo(open(f'{os.getcwd()}/pictures/last_clean_frame.jpg', 'r'))
+        await message.answer_photo(open(f'{os.getcwd()}/pictures/last_clean_frame.jpg', 'rb'))
 
 @dp.message_handler(i18n_text='Last face 🥷', is_admin=True)
 @dp.message_handler(commands=['opencv_show_last_face'], is_admin=True)
 async def _opencv_show_last(message: Message):
     try:
-      open(f'{os.getcwd()}/pictures/last_face.jpg', 'r')
+      open(f'{os.getcwd()}/pictures/last_face.jpg', 'rb')
     except IOError:
         await message.answer(_('Could not open the file'))
     else:
-        await message.answer_photo(open(f'{os.getcwd()}/pictures/last_face.jpg', 'r'))
+        await message.answer_photo(open(f'{os.getcwd()}/pictures/last_face.jpg', 'rb'))
