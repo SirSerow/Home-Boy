@@ -1,5 +1,5 @@
 # <p align="center">One bot to rule them all
-**Telegram bot solution for bringing automated home controls even closer to user**
+**Telegram bot solution for bringing automated home controls even closer to the user**
 
 ## Purpose
 Main purpose of this project is to demonstrate the possibilities of integrating home control systems with wide-spread messengers such as Telegram. The following example implements advanced user management system which may be useful for temporarily sharing controls with users with different levels of access. Such feature may be implemented as a intuitive and easy to access home control system for rented apartments and hotels.
